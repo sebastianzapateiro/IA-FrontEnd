@@ -1,12 +1,14 @@
-import {GraphyType} from "./components/GraphyType.jsx";
+import {GraphType} from "./components/GraphType.jsx";
 import {StudentInformation} from "./components/StudentInformation.jsx";
+import {GraphResults} from "./components/GraphResults.jsx";
 
 function App() {
 
     return (
         <>
-            <GraphyType></GraphyType>
+            <GraphType></GraphType>
             <StudentInformation></StudentInformation>
+            <GraphResults></GraphResults>
         </>
     )
 }

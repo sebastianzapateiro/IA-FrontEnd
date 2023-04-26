@@ -1,6 +1,6 @@
 import {Box, Flex} from "@chakra-ui/react"
 
-export function GraphyType() {
+export function GraphType() {
     return (
         <>
             <Box border='1px' borderColor='gray.200'  bg='tomato'>
