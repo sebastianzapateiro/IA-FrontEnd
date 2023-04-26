@@ -3,11 +3,9 @@ import {Box, Flex} from "@chakra-ui/react"
 export function GraphType() {
     return (
         <>
-            <Box border='1px' borderColor='gray.200'  bg='tomato'>
-
+            <Box border='1px' borderColor='gray.200' >
                 <p>Predice tu prueba saber pro</p>
                 <Flex  display="flex" alignItems="center" justifyContent="space-between">
-
                     <div>
                         <h1>
                             Ingresa para saber tu <br/>
@@ -24,9 +22,7 @@ export function GraphType() {
                             <li>Estado actual graficamente</li>
                         </ol>
                     </div>
-
                 </Flex>
-
             </Box>
         </>
     )
