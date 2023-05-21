@@ -7,9 +7,10 @@ import {
 import {useFormik} from "formik";
 import { request } from "../js/apifetch";
 import { useState } from "react";
-
+import Swal from "sweetalert2";
+import cat from '../assets/nyan-cat.gif'
+import catbg from '../assets/trees.png'
 export function StudentInformation() {
-    const [result, setResult] = useState('');
 
     const formik = useFormik({
         initialValues: {
@@ -40,7 +41,21 @@ export function StudentInformation() {
         },
         onSubmit: (values) => {
             request(JSON.stringify(values)).then((data)=>{
-                setResult(data);
+                let result = data?'Ganas':'Pierdes';
+
+                Swal.fire({
+                    title: `Dejame decirte que... ${result} la prueba`,
+                    width: 600,
+                    padding: '3em',
+                    color: '#716add',
+                    background: `#fff url(${catbg})`,
+                    backdrop: `
+                      rgba(0,0,123,0.4)
+                      url("${cat}")
+                      left top
+                      no-repeat
+                    `
+                  })
                 console.log(result);
 
             })
@@ -296,7 +311,7 @@ export function StudentInformation() {
 
                 <FormControl>
 
-                    <FormLabel fontWeight='bold'  htmlFor="ESTU_PAGOMATRICULABECA">¿Paga usted mismo su matricula?</FormLabel>
+                    <FormLabel fontWeight='bold'  htmlFor="ESTU_PAGOMATRICULABECA">¿Paga su matricula a través de una beca?</FormLabel>
                     <Select id="ESTU_PAGOMATRICULABECA"
                             name="ESTU_PAGOMATRICULABECA"
                             type="text"
