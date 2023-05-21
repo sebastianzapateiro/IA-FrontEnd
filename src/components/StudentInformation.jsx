@@ -10,29 +10,28 @@ export function StudentInformation() {
     const formik = useFormik({
         initialValues: {
 
-            ESTU_PAIS_RESIDE: [], // Realizado
+            ESTU_PAIS_RESIDE: "", // Realizado
             ESTU_DEPTO_RESIDE: "", // Realizado
             ESTU_INST_DEPARTAMENTO: "", // Realizado
-            ESTU_PRGM_ACADEMICO: "",
-            ESTU_METODO_PRGM: "",
-            ESTU_VALORMATRICULAUNIVERSIDAD: "",
-            ESTU_DEPTO_PRESENTACION: "",
-            ESTU_PAGOMATRICULABECA: "",
-            ESTU_PAGOMATRICULACREDITO: "",
-            ESTU_HORASSEMANATRABAJA: "",
-            ESTU_PRIVADO_LIBERTAD: "",
-            ESTU_NACIONALIDAD: "",
-            ESTU_GENERO: "",
-            ESTU_PAGOMATRICULAPADRES: "",
-            ESTU_PAGOMATRICULAPROPIO: "",
-            FAMI_EDUCACIONPADRE: "",
-            FAMI_TIENEAUTOMOVIL: "",
-            FAMI_TIENELAVADORA: "",
-            FAMI_ESTRATOVIVIENDA: "",
-            FAMI_TIENECOMPUTADOR: "",
-            FAMI_TIENEINTERNET: "",
-            FAMI_EDUCACIONMADRE: "",
-            INST_ORIGEN: ""
+            ESTU_PRGM_ACADEMICO: "", // Realizado
+            ESTU_METODO_PRGM: "", // Realizado
+            ESTU_VALORMATRICULAUNIVERSIDAD: "", // Realizado
+            ESTU_DEPTO_PRESENTACION: "", // Realizado
+            ESTU_PAGOMATRICULABECA: "", // Realizado
+            ESTU_PAGOMATRICULACREDITO: "", // Realizado
+            ESTU_HORASSEMANATRABAJA: "", // Realizado
+            ESTU_PRIVADO_LIBERTAD: "", // Realizado
+            ESTU_NACIONALIDAD: "", // Realizado
+            ESTU_GENERO: "", // Realizado
+            ESTU_PAGOMATRICULAPADRES: "", // Realizado
+            ESTU_PAGOMATRICULAPROPIO: "", // Realizado
+            FAMI_EDUCACIONPADRE: "", // Realizado
+            FAMI_TIENEAUTOMOVIL: "", // Realizado
+            FAMI_TIENELAVADORA: "", // Realizado
+            FAMI_ESTRATOVIVIENDA: "", // Realizado
+            FAMI_TIENECOMPUTADOR: "", // Realizado
+            FAMI_TIENEINTERNET: "", // Realizado
+            FAMI_EDUCACIONMADRE: "", // Realizado
         },
         onSubmit: (values) => {
             alert(JSON.stringify(values, null, 2));
@@ -446,6 +445,20 @@ export function StudentInformation() {
                 </FormControl>
 
                 <FormControl>
+                    <FormLabel fontWeight='bold'  htmlFor="ESTU_PAGOMATRICULAPROPIO">¿Paga usted mismo su matricula?</FormLabel>
+                    <Select id="ESTU_PAGOMATRICULAPROPIO"
+                            name="ESTU_PAGOMATRICULAPROPIO"
+                            type="text"
+                            variant="filled"
+                            onChange={formik.handleChange}
+                            value={formik.values.ESTU_PAGOMATRICULAPROPIO}
+                            placeholder='Seleccione la opción deseada'>
+                        <option value="Si">Si</option>
+                        <option value="No">No</option>
+                    </Select>
+                </FormControl>
+
+                <FormControl>
                     <FormLabel fontWeight='bold'  htmlFor="FAMI_EDUCACIONPADRE">Nivel de estudios del padre</FormLabel>
                     <Select id="FAMI_EDUCACIONPADRE"
                             name="FAMI_EDUCACIONPADRE"
@@ -454,18 +467,17 @@ export function StudentInformation() {
                             onChange={formik.handleChange}
                             value={formik.values.FAMI_EDUCACIONPADRE}
                             placeholder='Seleccione la opción deseada'>
-                        <option value="No sabe">No sabe</option>
-                        <option value="Técnica o tecnológica incompleta">Técnica o tecnológica incompleta</option>
-                        <option value="Educación profesional completa">Educación profesional completa</option>
-                        <option value="Ninguno">Ninguno</option>
-                        <option value="Secundaria (Bachillerato) incompleta">Secundaria (Bachillerato) incompleta</option>
-                        <option value="Primaria incompleta"></option>
-                        <option value="Secundaria (Bachillerato) incompleta">Secundaria (Bachillerato) incompleta</option>
-                        <option value="Primaria incompleta">Primaria incompleta</option>
-                        <option value="Educación profesional incompleta">Educación profesional incompleta</option>
-                        <option value="Secundaria (Bachillerato) completa">Secundaria (Bachillerato) completa</option>
-                        <option value="Postgrado">Postgrado</option>
                         <option value="No Aplica">No Aplica</option>
+                        <option value="Postgrado">Postgrado</option>
+                        <option value="Educación profesional completa">Educación profesional completa</option>
+                        <option value="Educación profesional incompleta">Educación profesional incompleta</option>
+                        <option value="Primaria incompleta">Primaria incompleta</option>
+                        <option value="Secundaria (Bachillerato) incompleta">Secundaria (Bachillerato) incompleta</option>
+                        <option value="Técnica o tecnológica incompleta">Técnica o tecnológica incompleta</option>
+                        <option value="Técnica o tecnológica completa">Técnica o tecnológica completa</option>
+                        <option value="Secundaria (Bachillerato) completa">Secundaria (Bachillerato) completa</option>
+                        <option value="Ninguno">Ninguno</option>
+                        <option value="No sabe">No sabe</option>
                     </Select>
                 </FormControl>
                 <FormControl>
@@ -548,19 +560,17 @@ export function StudentInformation() {
                             onChange={formik.handleChange}
                             value={formik.values.FAMI_EDUCACIONMADRE}
                             placeholder='Seleccione la opción deseada'>
-                        <option value="No sabe">No sabe</option>
-                        <option value="Técnica o tecnológica incompleta">Técnica o tecnológica incompleta</option>
-                        <option value="Educación profesional completa">Educación profesional completa</option>
-                        <option value="Ninguno">Ninguno</option>
-                        <option value="Secundaria (Bachillerato) incompleta">Secundaria (Bachillerato) incompleta</option>
-                        <option value="Primaria incompleta"></option>
-                        <option value="Secundaria (Bachillerato) incompleta">Secundaria (Bachillerato) incompleta</option>
-                        <option value="Primaria incompleta">Primaria incompleta</option>
-                        <option value="Educación profesional incompleta">Educación profesional incompleta</option>
-                        <option value="Secundaria (Bachillerato) completa">Secundaria (Bachillerato) completa</option>
-                        <option value="Postgrado">Postgrado</option>
                         <option value="No Aplica">No Aplica</option>
-
+                        <option value="Postgrado">Postgrado</option>
+                        <option value="Educación profesional completa">Educación profesional completa</option>
+                        <option value="Educación profesional incompleta">Educación profesional incompleta</option>
+                        <option value="Primaria incompleta">Primaria incompleta</option>
+                        <option value="Secundaria (Bachillerato) incompleta">Secundaria (Bachillerato) incompleta</option>
+                        <option value="Técnica o tecnológica incompleta">Técnica o tecnológica incompleta</option>
+                        <option value="Técnica o tecnológica completa">Técnica o tecnológica completa</option>
+                        <option value="Secundaria (Bachillerato) completa">Secundaria (Bachillerato) completa</option>
+                        <option value="Ninguno">Ninguno</option>
+                        <option value="No sabe">No sabe</option>
                     </Select>
                 </FormControl>
                 <Button type="submit" colorScheme="purple" width="full">
