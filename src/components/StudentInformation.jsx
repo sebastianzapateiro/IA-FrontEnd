@@ -5,8 +5,12 @@ import {
     Select
 } from "@chakra-ui/react"
 import {useFormik} from "formik";
+import { request } from "../js/apifetch";
+import { useState } from "react";
 
 export function StudentInformation() {
+    const [result, setResult] = useState('');
+
     const formik = useFormik({
         initialValues: {
 
@@ -32,9 +36,18 @@ export function StudentInformation() {
             FAMI_TIENECOMPUTADOR: "", // Realizado
             FAMI_TIENEINTERNET: "", // Realizado
             FAMI_EDUCACIONMADRE: "", // Realizado
+            INST_ORIGEN: "",
         },
         onSubmit: (values) => {
-            alert(JSON.stringify(values, null, 2));
+            request(JSON.stringify(values)).then((data)=>{
+                setResult(data);
+                console.log(result);
+
+            })
+
+
+             
+
         }
     });
     return (
@@ -573,6 +586,25 @@ export function StudentInformation() {
                         <option value="No sabe">No sabe</option>
                     </Select>
                 </FormControl>
+
+                <FormControl>
+                    <FormLabel fontWeight='bold'  htmlFor="INST_ORIGEN">Tipo de Institución en la que Estudia</FormLabel>
+                    <Select id="INST_ORIGEN"
+                            name="INST_ORIGEN"
+                            type="text"
+                            variant="filled"
+                            onChange={formik.handleChange}
+                            value={formik.values.INST_ORIGEN}
+                            placeholder='Seleccione la opción deseada'>
+                        <option value="NO OFICIAL - CORPORACIÓN">NO OFICIAL - CORPORACIÓN</option>
+                        <option value="OFICIAL DEPARTAMENTAL">OFICIAL DEPARTAMENTAL</option>
+                        <option value="NO OFICIAL - FUNDACIÓN">NO OFICIAL - FUNDACIÓN</option>
+                        <option value="OFICIAL NACIONAL">OFICIAL NACIONAL</option>
+                        <option value="OFICIAL MUNICIPAL">OFICIAL MUNICIPAL</option>
+                        <option value="REGIMEN ESPECIAL">REGIMEN ESPECIAL</option>
+                    </Select>
+                </FormControl>
+
                 <Button type="submit" colorScheme="purple" width="full">
                     Enviar
                 </Button>
