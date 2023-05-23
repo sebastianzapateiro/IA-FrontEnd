@@ -1,27 +1,35 @@
-import {Box, Flex} from "@chakra-ui/react"
-
+import { Box, Flex, Text } from "@chakra-ui/react"
+import { BsEmojiSmileFill } from "react-icons/bs";
+import styled from 'styled-components'
+import { DivInfo } from '../css/Style'
 export function GraphType() {
     return (
         <>
-            <Box border='1px' borderColor='gray.200' >
-                <p>Predice tu prueba saber pro</p>
-                <Flex  display="flex" alignItems="center" justifyContent="space-between">
+            <Box>
+                <Flex alignItems='center'>
+                    <Box flex='1'>
+                        <BsEmojiSmileFill size='2em' />
+                    </Box>
+                    <Box flex='30'>
+                        <Text fontSize='3xl'>Predice tu prueba saber pro</Text>
+                    </Box>
+
+                </Flex>
+                <hr />
+                <Flex display="flex" alignItems="center" justifyContent="space-between">
                     <div>
-                        <h1>
-                            Ingresa para saber tu <br/>
-                            estado de aprobación
-                        </h1>
+                        <Text fontSize='4xl'> Ingresa para saber tu <br />
+                            estado de aprobación</Text>
+
                     </div>
-                    <div>
-                        <p>Conoce</p>
-                        <hr></hr>
-                        <ol>
-                            <li>Nivel de desempeño</li>
-                            <li>Promedio de puntaje</li>
-                            <li>Precentil global</li>
-                            <li>Estado actual graficamente</li>
-                        </ol>
-                    </div>
+                    <DivInfo>
+                        <Text align='center' fontSize='3xl'>Conoce</Text>
+
+                            <Text fontSize='2xl'>Nivel de desempeño</Text>  
+                            <Text fontSize='2xl'>Promedio de puntaje</Text>  
+                            <Text fontSize='2xl'>Precentil global</Text>  
+                            <Text fontSize='2xl'>Estado actual graficamente</Text>  
+                    </DivInfo>
                 </Flex>
             </Box>
         </>
