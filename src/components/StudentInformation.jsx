@@ -1,6 +1,6 @@
 import {
     Box,
-    Button, Flex, FormControl,
+    Button, Center, Flex, FormControl,
     FormLabel,
     Select,
     Spacer,
@@ -12,9 +12,11 @@ import Swal from "sweetalert2";
 import cat from '../assets/nyan-cat.gif'
 import catbg from '../assets/trees.png'
 import { BsPeopleFill, BsPersonFill } from "react-icons/bs";
+import { useState } from "react";
 
 export function StudentInformation() {
 
+     let [loading, setLoading] = useState(false);
     const formik = useFormik({
         initialValues: {
 
@@ -43,24 +45,22 @@ export function StudentInformation() {
             INST_ORIGEN: "",
         },
         onSubmit: (values) => {
+            setLoading(true);
             request(JSON.stringify(values)).then((data) => {
-                let resultPrediction = data.prediction ? 'Ganas' : 'Pierdes';
+                let resultPrediction = data.prediction ? 'Encima' : 'Debajo';
                 let resultRecommendation = data.recommendation;
 
 
                 Swal.fire({
-                    title: `Dejame decirte que ${resultPrediction} la prueba \n Sigue estas recomendaciones para mejorar ${resultRecommendation}`,
-                    width: 600,
+                    title: 'Predicción',
+                    html: `<p style="font-size: 2em;">De acuerdo al modelo predictivo, obtendrias un resultado por <b>${resultPrediction}</b> de la media </p> <br/>  <p><p style="font-style: italic;" >Sigue estas recomendaciones para mejorar:</p> ${resultRecommendation}</p>`,
+                    width: 1000,
                     padding: '3em',
                     color: '#716add',
                     background: `#fff url(${catbg})`,
-                    backdrop: `
-                      rgba(0,0,123,0.4)
-                      url("${cat}")
-                      left top
-                      no-repeat
-                    `
+
                 })
+                setLoading(false);
             })
 
 
@@ -69,7 +69,7 @@ export function StudentInformation() {
         }
     });
     return (
-        <Box bg="white" p={6} rounded="md">
+        <Box bg="white"  p={6} rounded="md">
             <form onSubmit={formik.handleSubmit}>
                 <Flex flexWrap='wrap' gap='10'>
                     <Box flex='1'>
@@ -240,6 +240,15 @@ export function StudentInformation() {
                                 <option value="INGENIERIA DE SISTEMAS">INGENIERIA DE SISTEMAS</option>
                                 <option value="PSICOLOGIA">PSICOLOGIA</option>
                                 <option value="MEDICINA">MEDICINA</option>
+                                <option value="ADMINISTRACIÓN DE EMPRESAS">ADMINISTRACIÓN DE EMPRESAS</option>
+                                <option value="INGENIERIA INFORMATICA">INGENIERIA INFORMATICA</option>
+                                <option value="INGENIERIA AMBIENTAL Y DE SANEAMIENTO" >INGENIERIA AMBIENTAL Y DE SANEAMIENTO</option>
+                                <option value="INGENIERIA ELECTRONICA">INGENIERIA ELECTRONICA</option>
+                                <option value="INGENIERIA DE SISTEMAS Y COMPUTACION">INGENIERIA DE SISTEMAS Y COMPUTACION</option>
+                                <option value="INGENIERIA MECANICA" >INGENIERIA MECANICA</option>
+                                <option value="INGENIERIA AMBIENTAL" >INGENIERIA AMBIENTAL</option>
+                                <option value="INGENIERIA  AMBIENTAL">INGENIERIA  AMBIENTAL</option>
+
                             </Select>
                         </FormControl>
                         <FormControl>
@@ -480,14 +489,14 @@ export function StudentInformation() {
                             </Select>
                         </FormControl>
                     </Box>
-                    <Box  flex='1'>
-                        
+                    <Box flex='1'>
+
                         <Flex alignItems='center'>
                             <Box flex='1' ><Text fontSize='2xl'>Información familiar </Text></Box>
                             <Box flex='2' ><BsPeopleFill size='3em' /></Box>
 
-                        </Flex>                        
-                        
+                        </Flex>
+
                         <FormControl>
                             <FormLabel fontWeight='bold' htmlFor="ESTU_PAGOMATRICULAPADRES">¿Sus padres pagan su matricula?</FormLabel>
                             <Select id="ESTU_PAGOMATRICULAPADRES"
@@ -631,9 +640,11 @@ export function StudentInformation() {
 
                     </Box>
                 </Flex>
-                <Button type="submit" colorScheme="purple" width="full">
-                    Enviar
-                </Button>
+                <Center mt={5}>
+                    <Button isLoading={loading} type="submit" colorScheme="purple" width="300px">
+                        Enviar
+                    </Button>
+                </Center>
             </form>
         </Box>
     )

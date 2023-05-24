@@ -24,11 +24,7 @@ export function GraphType() {
                     </div>
                     <DivInfo>
                         <Text align='center' fontSize='3xl'>Conoce</Text>
-
-                            <Text fontSize='2xl'>Nivel de desempeño</Text>  
-                            <Text fontSize='2xl'>Promedio de puntaje</Text>  
-                            <Text fontSize='2xl'>Precentil global</Text>  
-                            <Text fontSize='2xl'>Estado actual graficamente</Text>  
+                            <Text fontSize='2xl'>Gráfico de barras</Text>  
                     </DivInfo>
                 </Flex>
             </Box>
