@@ -17,7 +17,6 @@ export function GraphResults() {
             <Tabs variant='soft-rounded' colorScheme='purple'>
                 <TabList>
                     <Tab>Horas de trabajo</Tab>
-                    <Tab>Tab 2</Tab>
                 </TabList>
                 <TabPanels>
                     <TabPanel>

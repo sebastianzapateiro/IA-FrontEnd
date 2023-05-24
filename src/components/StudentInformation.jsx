@@ -4,7 +4,8 @@ import {
     FormLabel,
     Select,
     Spacer,
-    Text
+    Text,
+    Tooltip
 } from "@chakra-ui/react"
 import { useFormik } from "formik";
 import { request } from "../js/apifetch";
@@ -16,7 +17,7 @@ import { useState } from "react";
 
 export function StudentInformation() {
 
-     let [loading, setLoading] = useState(false);
+    let [loading, setLoading] = useState(false);
     const formik = useFormik({
         initialValues: {
 
@@ -69,7 +70,7 @@ export function StudentInformation() {
         }
     });
     return (
-        <Box bg="white"  p={6} rounded="md">
+        <Box bg="white" p={6} rounded="md">
             <form onSubmit={formik.handleSubmit}>
                 <Flex flexWrap='wrap' gap='10'>
                     <Box flex='1'>
@@ -85,6 +86,7 @@ export function StudentInformation() {
                                 name="ESTU_PAIS_RESIDE"
                                 type="text"
                                 variant="filled"
+                                required='true'
                                 onChange={formik.handleChange}
                                 value={formik.values.ESTU_PAIS_RESIDE} placeholder='Seleccione el país'>
                                 <option value='COLOMBIA'>COLOMBIA</option>
@@ -152,6 +154,7 @@ export function StudentInformation() {
                                 name="ESTU_DEPTO_RESIDE"
                                 type="text"
                                 variant="filled"
+                                required='true'
                                 onChange={formik.handleChange}
                                 value={formik.values.ESTU_DEPTO_RESIDE}
                                 placeholder='Seleccione el departamento de residencia'>
@@ -198,6 +201,7 @@ export function StudentInformation() {
                                 name="ESTU_INST_DEPARTAMENTO"
                                 type="text"
                                 variant="filled"
+                                required='true'
                                 onChange={formik.handleChange}
                                 value={formik.values.ESTU_INST_DEPARTAMENTO}
                                 placeholder='Seleccione el departamento de la institución'>
@@ -234,6 +238,7 @@ export function StudentInformation() {
                                 name="ESTU_PRGM_ACADEMICO"
                                 type="text"
                                 variant="filled"
+                                required='true'
                                 onChange={formik.handleChange}
                                 value={formik.values.ESTU_PRGM_ACADEMICO}
                                 placeholder='Seleccione el programa académico al que pertenece'>
@@ -257,6 +262,7 @@ export function StudentInformation() {
                                 name="ESTU_METODO_PRGM"
                                 type="text"
                                 variant="filled"
+                                required='true'
                                 onChange={formik.handleChange}
                                 value={formik.values.ESTU_METODO_PRGM}
                                 placeholder='Seleccione la metodología del programa académico'>
@@ -271,6 +277,7 @@ export function StudentInformation() {
                                 name="ESTU_VALORMATRICULAUNIVERSIDAD"
                                 type="text"
                                 variant="filled"
+                                required='true'
                                 onChange={formik.handleChange}
                                 value={formik.values.ESTU_VALORMATRICULAUNIVERSIDAD}
                                 placeholder='Seleccione el valor de matricula de la universidad'>
@@ -298,6 +305,7 @@ export function StudentInformation() {
                                 name="ESTU_DEPTO_PRESENTACION"
                                 type="text"
                                 variant="filled"
+                                required='true'
                                 onChange={formik.handleChange}
                                 value={formik.values.ESTU_DEPTO_PRESENTACION}
                                 placeholder='Seleccione el departamento de Presentación del examen'>
@@ -335,6 +343,7 @@ export function StudentInformation() {
                                 name="ESTU_PAGOMATRICULABECA"
                                 type="text"
                                 variant="filled"
+                                required='true'
                                 onChange={formik.handleChange}
                                 value={formik.values.ESTU_PAGOMATRICULABECA}
                                 placeholder='Seleccione la opción deseada'>
@@ -345,16 +354,20 @@ export function StudentInformation() {
                         <FormControl>
 
                             <FormLabel fontWeight='bold' htmlFor="ESTU_PAGOMATRICULACREDITO">¿Tiene crédito para pagar su matricula?</FormLabel>
-                            <Select id="ESTU_PAGOMATRICULACREDITO"
-                                name="ESTU_PAGOMATRICULACREDITO"
-                                type="text"
-                                variant="filled"
-                                onChange={formik.handleChange}
-                                value={formik.values.ESTU_PAGOMATRICULACREDITO}
-                                placeholder='Seleccione la opción deseada'>
-                                <option value="Si">Si</option>
-                                <option value="No">No</option>
-                            </Select>
+                            <Tooltip label='Si cuenta con algun crédito para pagar la universidad'>
+
+                                <Select id="ESTU_PAGOMATRICULACREDITO"
+                                    name="ESTU_PAGOMATRICULACREDITO"
+                                    type="text"
+                                    variant="filled"
+                                    required='true'
+                                    onChange={formik.handleChange}
+                                    value={formik.values.ESTU_PAGOMATRICULACREDITO}
+                                    placeholder='Seleccione la opción deseada'>
+                                    <option value="Si">Si</option>
+                                    <option value="No">No</option>
+                                </Select>
+                            </Tooltip>
                         </FormControl>
                         <FormControl>
 
@@ -363,6 +376,7 @@ export function StudentInformation() {
                                 name="ESTU_HORASSEMANATRABAJA"
                                 type="text"
                                 variant="filled"
+                                required='true'
                                 onChange={formik.handleChange}
                                 value={formik.values.ESTU_HORASSEMANATRABAJA}
                                 placeholder='Seleccione la opción deseada'>
@@ -381,6 +395,7 @@ export function StudentInformation() {
                                 name="ESTU_PRIVADO_LIBERTAD"
                                 type="text"
                                 variant="filled"
+                                required='true'
                                 onChange={formik.handleChange}
                                 value={formik.values.ESTU_PRIVADO_LIBERTAD}
                                 placeholder='Seleccione la opción deseada'>
@@ -395,6 +410,7 @@ export function StudentInformation() {
                                 name="ESTU_NACIONALIDAD"
                                 type="text"
                                 variant="filled"
+                                required='true'
                                 onChange={formik.handleChange}
                                 value={formik.values.ESTU_NACIONALIDAD}
                                 placeholder='Seleccione la nacionalidad del examinado'>
@@ -464,6 +480,7 @@ export function StudentInformation() {
                                 name="ESTU_GENERO"
                                 type="text"
                                 variant="filled"
+                                required='true'
                                 onChange={formik.handleChange}
                                 value={formik.values.ESTU_GENERO}
                                 placeholder='Seleccione la opción deseada'>
@@ -477,6 +494,7 @@ export function StudentInformation() {
                                 name="INST_ORIGEN"
                                 type="text"
                                 variant="filled"
+                                required='true'
                                 onChange={formik.handleChange}
                                 value={formik.values.INST_ORIGEN}
                                 placeholder='Seleccione la opción deseada'>
@@ -503,6 +521,7 @@ export function StudentInformation() {
                                 name="ESTU_PAGOMATRICULAPADRES"
                                 type="text"
                                 variant="filled"
+                                required='true'
                                 onChange={formik.handleChange}
                                 value={formik.values.ESTU_PAGOMATRICULAPADRES}
                                 placeholder='Seleccione la opción deseada'>
@@ -516,6 +535,7 @@ export function StudentInformation() {
                                 name="ESTU_PAGOMATRICULAPROPIO"
                                 type="text"
                                 variant="filled"
+                                required='true'
                                 onChange={formik.handleChange}
                                 value={formik.values.ESTU_PAGOMATRICULAPROPIO}
                                 placeholder='Seleccione la opción deseada'>
@@ -529,6 +549,7 @@ export function StudentInformation() {
                                 name="FAMI_EDUCACIONPADRE"
                                 type="text"
                                 variant="filled"
+                                required='true'
                                 onChange={formik.handleChange}
                                 value={formik.values.FAMI_EDUCACIONPADRE}
                                 placeholder='Seleccione la opción deseada'>
@@ -551,6 +572,7 @@ export function StudentInformation() {
                                 name="FAMI_TIENEAUTOMOVIL"
                                 type="text"
                                 variant="filled"
+                                required='true'
                                 onChange={formik.handleChange}
                                 value={formik.values.FAMI_TIENEAUTOMOVIL}
                                 placeholder='Seleccione la opción deseada'>
@@ -564,6 +586,7 @@ export function StudentInformation() {
                                 name="FAMI_TIENELAVADORA"
                                 type="text"
                                 variant="filled"
+                                required='true'
                                 onChange={formik.handleChange}
                                 value={formik.values.FAMI_TIENELAVADORA}
                                 placeholder='Seleccione la opción deseada'>
@@ -577,6 +600,7 @@ export function StudentInformation() {
                                 name="FAMI_ESTRATOVIVIENDA"
                                 type="text"
                                 variant="filled"
+                                required='true'
                                 onChange={formik.handleChange}
                                 value={formik.values.FAMI_ESTRATOVIVIENDA}
                                 placeholder='Seleccione la opción deseada'>
@@ -595,6 +619,7 @@ export function StudentInformation() {
                                 name="FAMI_TIENECOMPUTADOR"
                                 type="text"
                                 variant="filled"
+                                required='true'
                                 onChange={formik.handleChange}
                                 value={formik.values.FAMI_TIENECOMPUTADOR}
                                 placeholder='Seleccione la opción deseada'>
@@ -608,6 +633,7 @@ export function StudentInformation() {
                                 name="FAMI_TIENEINTERNET"
                                 type="text"
                                 variant="filled"
+                                required='true'
                                 onChange={formik.handleChange}
                                 value={formik.values.FAMI_TIENEINTERNET}
                                 placeholder='Seleccione la opción deseada'>
@@ -621,6 +647,7 @@ export function StudentInformation() {
                                 name="FAMI_EDUCACIONMADRE"
                                 type="text"
                                 variant="filled"
+                                required='true'
                                 onChange={formik.handleChange}
                                 value={formik.values.FAMI_EDUCACIONMADRE}
                                 placeholder='Seleccione la opción deseada'>
